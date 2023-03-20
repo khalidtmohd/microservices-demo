@@ -10,7 +10,6 @@ pipeline {
     stage('Sonarqube') {
       steps {
         sh '''export PATH="$PATH:/opt/sonar-scanner/bin"
-source /etc/profile.d/sonar-scanner.sh
 env | grep PATH
 sonar-scanner -v
 sonar-scanner \\
