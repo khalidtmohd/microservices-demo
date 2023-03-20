@@ -14,7 +14,7 @@ env | grep PATH
 sonar-scanner -v
 sonar-scanner \\
   -Dsonar.projectKey=test \\
-  -Dsonar.sources=./src/adservice/src/main/
+  -Dsonar.sources=.\\src
   -Dsonar.host.url=http://43.205.109.218:9000 \\
   -Dsonar.login=sqp_7685e8148b132f66dc0897dbe5b7a55b7b102f3f
 
