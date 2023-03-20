@@ -9,7 +9,9 @@ pipeline {
 
     stage('Sonarqube') {
       steps {
-        sh '''sonar-scanner \\
+        sh '''env | grep PATH
+sonar-scanner -v
+sonar-scanner \\
   -Dsonar.projectKey=test \\
   -Dsonar.sources=. \\
   -Dsonar.host.url=http://43.205.109.218:9000 \\
