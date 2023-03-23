@@ -24,14 +24,7 @@ sonar-scanner \\
 
     stage('unit test') {
       steps {
-        sh '''#!/bin/sh
-
-for SERVICE in "shippingservice" "productcatalogservice"; do
-          echo "testing $SERVICE..."
-          pushd src/$SERVICE
-          go test
-          popd
-        done'''
+        sh 'dotnet test src/cartservice/'
       }
     }
 
