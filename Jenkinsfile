@@ -33,6 +33,9 @@ sonar-scanner \\
         stage('go unit test') {
           steps {
             sh '''#!/bin/bash
+echo \'export GOPATH=$HOME/go\' >> ~/.profile
+echo \'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin\' >> ~/.profile
+source ~/.profile
 for SERVICE in "shippingservice" "productcatalogservice"; do
           echo "testing $SERVICE..."
           pushd src/$SERVICE
