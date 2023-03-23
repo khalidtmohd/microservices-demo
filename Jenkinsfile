@@ -15,7 +15,7 @@ sonar-scanner -v
 sonar-scanner \\
   -Dsonar.projectKey=test \\
   -Dsonar.sources=.  \\
-  -Dsonar.host.url=http://43.205.109.218:9000 \\
+  -Dsonar.host.url=http://65.1.145.233:9000 \\
   -Dsonar.exclusions=src/adservice/src/main/java/hipstershop/*  \\
   -Dsonar.login=sqp_8bc212bf4a991ff638014a5fb74a79130abb7c1e
 '''
