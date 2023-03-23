@@ -23,8 +23,24 @@ sonar-scanner \\
     }
 
     stage('unit test') {
-      steps {
-        sh 'dotnet test src/cartservice/'
+      parallel {
+        stage('unit test') {
+          steps {
+            sh 'dotnet test src/cartservice/'
+          }
+        }
+
+        stage('go unit test') {
+          steps {
+            sh '''for SERVICE in "shippingservice" "productcatalogservice"; do
+          echo "testing $SERVICE..."
+          pushd src/$SERVICE
+          go test
+          popd
+        done'''
+          }
+        }
+
       }
     }
 
