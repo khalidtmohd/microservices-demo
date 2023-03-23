@@ -32,7 +32,8 @@ sonar-scanner \\
 
         stage('go unit test') {
           steps {
-            sh '''for SERVICE in "shippingservice" "productcatalogservice"; do
+            sh '''#!/bin/bash
+for SERVICE in "shippingservice" "productcatalogservice"; do
           echo "testing $SERVICE..."
           pushd src/$SERVICE
           go test
