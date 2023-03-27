@@ -9,7 +9,7 @@ pipeline {
 
     stage('fsd') {
       steps {
-        grypeScan(scanDest: 'repository:mohdkhalid/php-apache:latest', repName: 'myScanResult.txt', autoInstall: true)
+        grypeScan(scanDest: 'docker:mohdkhalid/php-apache:latest', repName: 'myScanResult.txt', autoInstall: true)
       }
     }
 
