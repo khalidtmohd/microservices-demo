@@ -22,7 +22,9 @@ pipeline {
     stage('error') {
       steps {
         sh '''cd src/adservice
-docker build . -t test_image/centos'''
+docker build . -t mohdkhalid/msdemo:latest
+
+docker push -t mohdkhalid/msdemo:latest'''
         pwd()
       }
     }
