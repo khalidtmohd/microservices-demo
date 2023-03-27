@@ -22,9 +22,9 @@ pipeline {
     stage('error') {
       steps {
         sh '''cd src/adservice
-docker build . -t mohdkhalid/msdemo:latest
+docker build . -t mohdkhalid/msdemo:adservice
 
-docker push -t mohdkhalid/msdemo:latest'''
+docker push mohdkhalid/msdemo:adservice'''
         pwd()
       }
     }
