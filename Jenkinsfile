@@ -36,4 +36,7 @@ syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-${B
     }
 
   }
+  environment {
+    BUILD_NUMBER = '12'
+  }
 }
