@@ -44,6 +44,12 @@ syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-12.
       }
     }
 
+    stage('Archive Artifacts') {
+      steps {
+        archiveArtifacts '*.json'
+      }
+    }
+
   }
   environment {
     BUILD_NUMBER = '12'
