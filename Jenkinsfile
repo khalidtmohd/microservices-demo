@@ -19,10 +19,10 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         sh '''cd src/adservice
-Docker build --tag test:latest
+docker build --tag test:latest
 cd'''
       }
     }
