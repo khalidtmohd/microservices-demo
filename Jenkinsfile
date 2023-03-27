@@ -28,7 +28,7 @@ docker push mohdkhalid/msdemo:adservice'''
         pwd()
         sh '''docker login -u mohdkhalid -p Ibrahim@12
 
-syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json adservice:${BUILD_NUMBER} > sbom-${BUILD_NUMBER}.jso'''
+syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-${BUILD_NUMBER}.jso'''
       }
     }
 
