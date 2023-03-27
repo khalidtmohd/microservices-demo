@@ -19,9 +19,11 @@ pipeline {
       }
     }
 
-    stage('fsd') {
+    stage('') {
       steps {
-        grypeScan(scanDest: 'mohdkhalid/php-apache:latest', repName: 'myScanResult.txt', autoInstall: true)
+        sh '''cd src/adservice
+Docker build --tag test:latest
+cd'''
       }
     }
 
