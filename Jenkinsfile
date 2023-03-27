@@ -21,7 +21,7 @@ pipeline {
 
     stage('error') {
       steps {
-        sh 'docker build -f src/adservice/Dockerfile -t test_image/centos'
+        sh 'docker build -f ./src/adservice/Dockerfile -t test_image/centos'
       }
     }
 
