@@ -26,6 +26,9 @@ docker build . -t mohdkhalid/msdemo:adservice
 docker login -u mohdkhalid -p Ibrahim@12
 docker push mohdkhalid/msdemo:adservice'''
         pwd()
+        sh '''docker login -u mohdkhalid -p Ibrahim@12
+
+syft mohdkhalid/msdemo:adservice-o json adservice:${BUILD_NUMBER} > sbom-${BUILD_NUMBER}.jso'''
       }
     }
 
