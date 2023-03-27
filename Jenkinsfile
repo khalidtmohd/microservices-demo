@@ -20,17 +20,27 @@ pipeline {
     }
 
     stage('error') {
-      steps {
-        sh '''cd src/adservice
+      parallel {
+        stage('error') {
+          steps {
+            sh '''cd src/adservice
 docker build . -t mohdkhalid/msdemo:adservice
 docker login -u mohdkhalid -p Ibrahim@12
 docker push mohdkhalid/msdemo:adservice'''
-        pwd()
-        sh '''docker login -u mohdkhalid -p Ibrahim@12
+            pwd()
+            sh '''docker login -u mohdkhalid -p Ibrahim@12
 
 syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-12.json'''
-        sh '''sh \'grype mohdkhalid/msdemo:adservice -o json > vulns-12.json\'
-          '''
+          }
+        }
+
+        stage('val') {
+          steps {
+            sh '''grype mohdkhalid/msdemo:adservice -o json > vulns-12.json
+'''
+          }
+        }
+
       }
     }
 
