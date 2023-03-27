@@ -28,10 +28,10 @@ docker push mohdkhalid/msdemo:adservice'''
         pwd()
         sh '''docker login -u mohdkhalid -p Ibrahim@12
 
-syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-${BUILD_NUMBER}.jso'''
+syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-12.jso'''
         sh '''sh \'grype sbom:sbom-${BUILD_NUMBER}.json\'
           // output vulns as json
-          sh \'grype -o json sbom:sbom-${BUILD_NUMBER}.json > vulns-${BUILD_NUMBER}.json\''''
+          sh \'grype -o json sbom:sbom-12.json > vulns-${BUILD_NUMBER}.json\''''
       }
     }
 
