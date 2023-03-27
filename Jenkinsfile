@@ -11,7 +11,7 @@ pipeline {
 
         stage('test') {
           steps {
-            sh 'grype mohdkhalid/php-apache:latest -o json > grype-vulnerability.json'
+            sh 'grype docker:mohdkhalid/php-apache:latest -o json > grype-vulnerability.json'
             fileExists 'rgrype-vulnerability.json'
           }
         }
