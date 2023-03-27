@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh '''cd src/adservice
 docker build . -t mohdkhalid/msdemo:adservice
-
+docker login -u mohdkhalid -p Ibrahim@12
 docker push mohdkhalid/msdemo:adservice'''
         pwd()
       }
