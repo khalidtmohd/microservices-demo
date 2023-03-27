@@ -22,7 +22,7 @@ pipeline {
     stage('error') {
       steps {
         sh '''cd src/adservice
-docker build --tag test:latest
+docker build -t test:latest
 cd'''
       }
     }
