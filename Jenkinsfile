@@ -29,7 +29,8 @@ docker push mohdkhalid/msdemo:adservice'''
         sh '''docker login -u mohdkhalid -p Ibrahim@12
 
 syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-12.json'''
-        sh '''grype docker:mohdkhalid/msdemo:adservice -o json > vulns-12.json
+        sh '''docker login -u mohdkhalid -p Ibrahim@12
+grype docker:mohdkhalid/msdemo:adservice -o json > vulns-12.json
           // output vulns as json
          // sh \'grype -o json sbom:sbom-12.json > vulns-12.json\''''
       }
