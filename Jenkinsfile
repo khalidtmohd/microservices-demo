@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('BuildStart') {
-      steps {
-        echo 'Start build'
+      parallel {
+        stage('BuildStart') {
+          steps {
+            echo 'Start build'
+          }
+        }
+
+        stage('test') {
+          steps {
+            sh 'grype mohdkhalid/php-apache:latest -o json > grype-vulnerability.json'
+          }
+        }
+
       }
     }
 
