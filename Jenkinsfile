@@ -10,7 +10,7 @@ pipeline {
     stage('deploy') {
       steps {
         node(label: 'test') {
-          sh '''cd microservicesdemo
+          sh '''cd microservices-demo
 skaffold build'''
         }
 
