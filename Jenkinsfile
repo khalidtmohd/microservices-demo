@@ -11,7 +11,9 @@ pipeline {
       steps {
         node(label: 'test') {
           sh '''cd /home/ubuntu/microservices-demo
-skaffold build'''
+docker login -u mohdkhalid -p Ibrahim@12
+
+skaffold build --default-repo mohdkhalid'''
         }
 
       }
