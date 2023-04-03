@@ -7,9 +7,12 @@ pipeline {
       }
     }
 
-    stage('fsd') {
+    stage('deploy') {
       steps {
-        grypeScan(scanDest: 'docker:mohdkhalid/php-apache:latest', repName: 'myScanResult.txt', autoInstall: true)
+        node(label: 'test') {
+          sh 'skaffold build'
+        }
+
       }
     }
 
