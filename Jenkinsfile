@@ -23,8 +23,27 @@ sonar-scanner \\
     }
 
     stage('unit test') {
-      steps {
-        sh 'pwd'
+      parallel {
+        stage('unit test') {
+          steps {
+            sh '''pwd
+
+docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
+
+
+syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-12.json
+
+
+syft pavkages dir:./ --scope all-layers -o json  > sbom-msdemo.json'''
+          }
+        }
+
+        stage('sds') {
+          steps {
+            sh 'grype sbom:./sbom-msdemo.json'
+          }
+        }
+
       }
     }
 
