@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'test12'
-    }
-
-  }
+  agent any
   stages {
     stage('BuildStart') {
       steps {
@@ -33,7 +28,7 @@ sonar-scanner \\
       }
     }
 
-    stage('') {
+    stage('error') {
       steps {
         sh '''pwd
 
