@@ -23,10 +23,8 @@ sonar-scanner \\
     }
 
     stage('unit test') {
-      parallel {
-        stage('unit test') {
-          steps {
-            sh '''pwd
+      steps {
+        sh '''pwd
 
 docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
 
@@ -39,24 +37,16 @@ syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json
 
 
 grype sbom:./sbom-msdemo.json'''
-          }
-        }
-
-        stage('sds') {
-          steps {
-            sh '''pwd
-mv sbom-msdemo.json /home/ubuntu
-grype sbom:/home/ubuntu/sbom-msdemo.json'''
-          }
-        }
-
       }
     }
 
     stage('error') {
       steps {
         node(label: 'test12') {
-          sh 'pwd'
+          sh '''pwd
+docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
+
+skaffold build --default-repo docker.io/mohdkhalid'''
         }
 
       }
