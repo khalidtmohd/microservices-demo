@@ -42,7 +42,7 @@ syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json'''
           steps {
             sh '''pwd
 
-grype sbom:sbom-msdemo.json'''
+grype sbom:/var/lib/jenkins/workspace/final_testbranch/sbom-msdemo.json'''
           }
         }
 
