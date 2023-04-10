@@ -41,8 +41,8 @@ syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json'''
         stage('sds') {
           steps {
             sh '''pwd
-
-grype sbom:/var/lib/jenkins/workspace/final_testbranch/sbom-msdemo.json'''
+mv filename /home/ubuntu
+grype sbom:/home/ubuntu/sbom-msdemo.json'''
           }
         }
 
