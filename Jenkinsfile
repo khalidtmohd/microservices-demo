@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'test12'
+    }
+
+  }
   stages {
     stage('BuildStart') {
       steps {
@@ -25,6 +30,14 @@ sonar-scanner \\
     stage('unit test') {
       steps {
         sh 'dotnet test src/cartservice/'
+      }
+    }
+
+    stage('') {
+      steps {
+        sh '''pwd
+
+skaffold version'''
       }
     }
 
