@@ -40,7 +40,9 @@ syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json'''
 
         stage('sds') {
           steps {
-            sh 'grype sbom:sbom-msdemo.json'
+            sh '''pwd
+
+grype sbom:sbom-msdemo.json'''
           }
         }
 
