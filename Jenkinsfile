@@ -22,25 +22,7 @@ sonar-scanner \\
       }
     }
 
-    stage('unit test') {
-      steps {
-        sh '''pwd
-
-docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
-
-
-syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-12.json
-
-
-syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json
-
-
-
-grype sbom:./sbom-msdemo.json'''
-      }
-    }
-
-    stage('error') {
+    stage('Skaffold Build') {
       steps {
         node(label: 'test12') {
           sh '''pwd
@@ -49,6 +31,56 @@ docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
 skaffold build --default-repo docker.io/mohdkhalid'''
         }
 
+      }
+    }
+
+    stage('Syft Sbom') {
+      steps {
+        sh '''docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
+
+
+syft packages mohdkhalid/adservice --scope all-layers -o json  > adservice.json
+
+syft packages mohdkhalid/currencyservice --scope all-layers -o json  > currencyservice.json
+syft packages mohdkhalid/shippingservice --scope all-layers -o json  > shippingservice.json
+syft packages mohdkhalid/frontend --scope all-layers -o json  > frontend.json
+syft packages mohdkhalid/paymentservice --scope all-layers -o json  > paymentservice.json
+syft packages mohdkhalid/cartservice --scope all-layers -o json  > cartservice.json
+syft packages mohdkhalid/recommendationservice --scope all-layers -o json  > recommendationservice.json
+syft packages mohdkhalid/productcatalogservice --scope all-layers -o json  > productcatalogservice.json
+syft packages mohdkhalid/emailservice --scope all-layers -o json  > emailservice.json
+syft packages mohdkhalid/checkoutservice --scope all-layers -o json  > checkoutservice.json
+syft packages mohdkhalid/loadgenerator --scope all-layers -o json  > loadgenerator.json
+
+syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json
+
+
+'''
+      }
+    }
+
+    stage('Grype Vulnerability') {
+      steps {
+        sh '''grype sbom:./sbom-msdemo.json -o json > grype-vulnerability.json
+
+grype sbom:./adservice.json -o json > adservicevulnerability.json 
+grype sbom:./currencyservice.json -o json > currencyservicevulnerability.json 
+grype sbom:./shippingservice.json -o json > shippingservicevulnerability.json
+grype sbom:./frontend.json -o json > frontendvulnerability.json
+grype sbom:./paymentservice.json -o json > paymentservicevulnerability.json
+grype sbom:./cartservice.json -o json > cartservicevulnerability.json
+grype sbom:./recommendationservice.json -o json > recommendationservicevulnerability.json
+grype sbom:./productcatalogservice.json -o json > productcatalogservicevulnerability.json
+grype sbom:./emailservice.json -o json > emailservicevulnerability.json
+grype sbom:./checkoutservice.json -o json > checkoutservicevulnerability.json
+grype sbom:./loadgenerator.json -o json > loadgeneratorvulnerability.json
+'''
+      }
+    }
+
+    stage('Archive') {
+      steps {
+        archiveArtifacts '*.json'
       }
     }
 
