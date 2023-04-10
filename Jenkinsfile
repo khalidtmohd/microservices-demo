@@ -91,7 +91,7 @@ grype sbom:./loadgenerator.json -o json > loadgeneratorvulnerability.json
             node(label: 'test12') {
               sh '''docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
 
-skaffold deploy --default-repo docker.io/mohdkhalid'''
+skaffold run --default-repo docker.io/mohdkhalid'''
             }
 
           }
