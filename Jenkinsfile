@@ -24,15 +24,16 @@ sonar-scanner \\
 
     stage('unit test') {
       steps {
-        sh 'dotnet test src/cartservice/'
+        sh 'pwd'
       }
     }
 
     stage('error') {
       steps {
-        sh '''pwd
+        node(label: 'test12') {
+          sh 'pwd'
+        }
 
-skaffold version'''
       }
     }
 
