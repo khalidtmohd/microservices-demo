@@ -79,8 +79,24 @@ grype sbom:./loadgenerator.json -o json > loadgeneratorvulnerability.json
     }
 
     stage('Archive') {
-      steps {
-        archiveArtifacts '*.json'
+      parallel {
+        stage('Archive') {
+          steps {
+            archiveArtifacts '*.json'
+          }
+        }
+
+        stage('Deploy') {
+          steps {
+            node(label: 'deploy') {
+              sh '''docker login -u mohdkhalid -p dckr_pat_K1C6BUyQ5rwcOxmHtiYAOa_wryo
+
+skaffold deploy --default-repo docker.io/mohdkhalid'''
+            }
+
+          }
+        }
+
       }
     }
 
