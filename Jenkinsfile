@@ -36,7 +36,7 @@ syft packages mohdkhalid/msdemo:adservice --scope all-layers -o json  > sbom-12.
 
 syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json
 
-mv filename /home/ubuntu
+mv sbom-msdemo.json /home/ubuntu
 grype sbom:/home/ubuntu/sbom-msdemo.json
 
 '''
@@ -46,7 +46,7 @@ grype sbom:/home/ubuntu/sbom-msdemo.json
         stage('sds') {
           steps {
             sh '''pwd
-mv filename /home/ubuntu
+mv sbom-msdemo.json /home/ubuntu
 grype sbom:/home/ubuntu/sbom-msdemo.json'''
           }
         }
