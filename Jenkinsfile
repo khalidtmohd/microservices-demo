@@ -13,12 +13,10 @@ pipeline {
 env | grep PATH
 sonar-scanner -v
 sonar-scanner \\
-  -Dsonar.projectKey=test \\
-  -Dsonar.sources=.  \\
-  -Dsonar.host.url=http://65.1.145.233:9000 \\
-  -Dsonar.exclusions=src/adservice/src/main/java/hipstershop/*  \\
-  -Dsonar.login=sqp_8bc212bf4a991ff638014a5fb74a79130abb7c1e
-'''
+  -Dsonar.projectKey=MSdemo \\
+  -Dsonar.sources=. \\
+  -Dsonar.host.url=http://65.2.56.210:9000 \\
+  -Dsonar.token=sqp_592396504998fe800e2efda080a9875a5a759c6f'''
       }
     }
 
