@@ -16,7 +16,7 @@ sonar-scanner \\
   -Dsonar.projectKey=MSdemo \\
   -Dsonar.sources=. \\
   -Dsonar.exclusions=src/adservice/src/main/java/hipstershop/** \\
-  -Dsonar.host.url=http://65.2.56.210:9000 \\
+  -Dsonar.host.url=http://3.110.61.164:9000 \\
  -Dsonar.qualitygate.wait=true \\
   -Dsonar.token=sqp_592396504998fe800e2efda080a9875a5a759c6f'''
       }
