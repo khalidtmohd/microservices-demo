@@ -61,19 +61,19 @@ syft packages dir:./ --scope all-layers -o json  > sbom-msdemo.json
 
     stage('Grype Vulnerability') {
       steps {
-        sh '''grype sbom:./sbom-msdemo.json -o json > grype-vulnerability.json
+        sh '''grype sbom:./sbom-msdemo.json --fail-on high -o json > grype-vulnerability.json
 
-grype sbom:./adservice.json -o json > adservicevulnerability.json 
-grype sbom:./currencyservice.json -o json > currencyservicevulnerability.json 
-grype sbom:./shippingservice.json -o json > shippingservicevulnerability.json
-grype sbom:./frontend.json -o json > frontendvulnerability.json
-grype sbom:./paymentservice.json -o json > paymentservicevulnerability.json
-grype sbom:./cartservice.json -o json > cartservicevulnerability.json
-grype sbom:./recommendationservice.json -o json > recommendationservicevulnerability.json
-grype sbom:./productcatalogservice.json -o json > productcatalogservicevulnerability.json
-grype sbom:./emailservice.json -o json > emailservicevulnerability.json
-grype sbom:./checkoutservice.json -o json > checkoutservicevulnerability.json
-grype sbom:./loadgenerator.json -o json > loadgeneratorvulnerability.json
+grype sbom:./adservice.json --fail-on high -o json > adservicevulnerability.json 
+grype sbom:./currencyservice.json --fail-on high -o json > currencyservicevulnerability.json 
+grype sbom:./shippingservice.json --fail-on high  -o json > shippingservicevulnerability.json
+grype sbom:./frontend.json --fail-on high -o json > frontendvulnerability.json
+grype sbom:./paymentservice.json --fail-on high -o json > paymentservicevulnerability.json
+grype sbom:./cartservice.json --fail-on high -o json > cartservicevulnerability.json
+grype sbom:./recommendationservice.json --fail-on high -o json > recommendationservicevulnerability.json
+grype sbom:./productcatalogservice.json --fail-on high -o json > productcatalogservicevulnerability.json
+grype sbom:./emailservice.json --fail-on high -o json > emailservicevulnerability.json
+grype sbom:./checkoutservice.json --fail-on high -o json > checkoutservicevulnerability.json
+grype sbom:./loadgenerator.json --fail-on high -o json > loadgeneratorvulnerability.json
 '''
       }
     }
