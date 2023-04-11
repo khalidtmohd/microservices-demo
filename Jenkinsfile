@@ -18,7 +18,7 @@ sonar-scanner \\
   -Dsonar.exclusions=src/adservice/src/main/java/hipstershop/** \\
   -Dsonar.host.url=http://3.110.61.164:9000 \\
  -Dsonar.qualitygate.wait=true \\
-  -Dsonar.token=sqp_592396504998fe800e2efda080a9875a5a759c6f'''
+  -Dsonar.token=sqp_faeb237623d05fd72ff8e1ab6f830addf3c04871'''
       }
     }
 
